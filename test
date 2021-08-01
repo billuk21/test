@@ -1,1 +1,8 @@
 64f12cddaa88057e06a81b54e73b949b
+
+
+$Domain_Controller = hostname
+ $root = [ADSI]"LDAP://$($Domain_Controller)"
+$searcher = new-Object System.DirectoryServices.DirectorySearcher($root)
+$searcher.Filter = "(|(objectClass=domain)(objectCategory=organizationalunit)(objectCategory=groupPolicyContainer)
+$data = $searcher.FindAll()
